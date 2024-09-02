@@ -31,6 +31,11 @@
                                 level="H2"
                             />
                             <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                            <Button
+                                id="_IDGenButton1"
+                                icon="sap-icon://add"
+                                press="onAddRisk"
+                            />
                             <CheckBox
                                 id="_IDGenCheckBox1"
                                 text="Fixed Layout"
@@ -68,9 +73,11 @@
                         </Column>
                     </columns>
                     <items>
-                        <ColumnListItem id="_IDGenColumnListItem1"
-                                        type="Navigation"
-                                        press="onNavigateToMitigations">
+                        <ColumnListItem
+                            id="_IDGenColumnListItem1"
+                            type="Navigation"
+                            press="onNavigateToMitigations"
+                        >
                             <cells>
                                 <Text
                                     id="_IDGenText4"
