@@ -1,0 +1,80 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    controllerName="rap.custom.risksmanagedcustomui5.controller.ObjectPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns="sap.uxap"
+>
+    <m:Page
+        id="_IDGenPage1"
+        title="Title Page"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <ObjectPageLayout id="ObjectPageLayout">
+            <headerTitle>
+                <ObjectPageHeader
+                    id="ObjectPageHeader"
+                    objectTitle="{Title}"
+                    objectSubtitle="{Owner}"
+                />
+            </headerTitle>
+            <sections>
+                <ObjectPageSection
+                    id="_IDGenObjectPageSection1"
+                >
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection1">
+                        <m:Table
+                            id="MitigationTable"
+                            items="{_Mitigations}"
+                        >
+                            <m:columns>
+                                <m:Column id="_IDGenColumn1">
+                                    <m:Text
+                                        id="_IDGenText1"
+                                        text="Mitigation UUID"
+                                    />
+                                </m:Column>
+
+                                <m:Column id="_IDGenColumn2">
+                                    <m:Text
+                                        id="_IDGenText2"
+                                        text="Description"
+                                    />
+                                </m:Column>
+
+                                <m:Column id="_IDGenColumn3">
+                                    <m:Text
+                                        id="_IDGenText3"
+                                        text="Owner"
+                                    />
+                                </m:Column>
+                            </m:columns>
+                            <m:items>
+                                <m:ColumnListItem id="_IDGenColumnListItem1">
+                                    <m:cells>
+                                        <m:Text
+                                            id="_IDGenText4"
+                                            text="{Uuid}"
+                                        />
+                                        <m:Text
+                                            id="_IDGenText5"
+                                            text="{Description}"
+                                        />
+                                        <m:Text
+                                            id="_IDGenText6"
+                                            text="{Owner}"
+                                        />
+                                    </m:cells>
+                                </m:ColumnListItem>
+                            </m:items>
+                        </m:Table>
+                    </ObjectPageSubSection>
+                </ObjectPageSection>
+            </sections>
+        </ObjectPageLayout>
+    </m:Page>
+</mvc:View>

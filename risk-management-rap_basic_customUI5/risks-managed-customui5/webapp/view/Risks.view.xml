@@ -1,7 +1,162 @@
-<mvc:View controllerName="rap.custom.risksmanagedcustomui5.controller.Risks"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+<mvc:View
+    xmlns:core="sap.ui.core"
+    controllerName="rap.custom.risksmanagedcustomui5.controller.Risks"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <content>
+            <Panel
+                id="_IDGenPanel1"
+                class='sapUiResponsiveMargin'
+                width="auto"
+                headerText="Risks Management"
+                expandable="true"
+                expanded="true"
+                backgroundDesign="Solid"
+            >
+                <Table
+                    id="RisksTable"
+                    items="{/Risks}"
+                >
+                    <headerToolbar>
+                        <OverflowToolbar id="_IDGenOverflowToolbar1">
+                            <Title
+                                id="_IDGenTitle1"
+                                text="Risks"
+                                level="H2"
+                            />
+                            <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                            <CheckBox
+                                id="_IDGenCheckBox1"
+                                text="Fixed Layout"
+                                selected="true"
+                                select="onCheckBoxSelect"
+                            >
+                                <customData>
+                                    <core:CustomData
+                                        key="targetTable"
+                                        value="RisksTable"
+                                        writeToDom="true"
+                                    />
+                                </customData>
+                            </CheckBox>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column id="_IDGenColumn1">
+                            <Text
+                                id="_IDGenText1"
+                                text="Risks UUID"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn2">
+                            <Text
+                                id="_IDGenText2"
+                                text="Title"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn3">
+                            <Text
+                                id="_IDGenText3"
+                                text="Owner"
+                            />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem1"
+                                        type="Navigation"
+                                        press="onNavigateToMitigations">
+                            <cells>
+                                <Text
+                                    id="_IDGenText4"
+                                    text="{Uuid}"
+                                />
+                                <Text
+                                    id="_IDGenText5"
+                                    text="{Title}"
+                                />
+                                <Text
+                                    id="_IDGenText6"
+                                    text="{Owner}"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+                <Table
+                    id="MitigationTable"
+                    items="{/Mitigations}"
+                >
+                    <headerToolbar>
+                        <OverflowToolbar id="_IDGenOverflowToolbar2">
+                            <Title
+                                id="_IDGenTitle2"
+                                text="Mitigations"
+                                level="H2"
+                            />
+                            <ToolbarSpacer id="_IDGenToolbarSpacer2" />
+                            <CheckBox
+                                id="_IDGenCheckBox2"
+                                text="Fixed Layout"
+                                selected="true"
+                                select="onCheckBoxSelect"
+                            >
+                                <customData>
+                                    <core:CustomData
+                                        key="targetTable"
+                                        value="MitigationTable"
+                                        writeToDom="true"
+                                    />
+                                </customData>
+                            </CheckBox>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column id="_IDGenColumn4">
+                            <Text
+                                id="_IDGenText7"
+                                text="Mitigation UUID"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn5">
+                            <Text
+                                id="_IDGenText8"
+                                text="Description"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn6">
+                            <Text
+                                id="_IDGenText9"
+                                text="Owner"
+                            />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem2">
+                            <cells>
+                                <Text
+                                    id="_IDGenText10"
+                                    text="{Uuid}"
+                                />
+                                <Text
+                                    id="_IDGenText11"
+                                    text="{Description}"
+                                />
+                                <Text
+                                    id="_IDGenText12"
+                                    text="{Owner}"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel>
+        </content>
     </Page>
 </mvc:View>

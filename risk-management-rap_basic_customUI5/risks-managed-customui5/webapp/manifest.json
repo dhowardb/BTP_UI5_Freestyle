@@ -103,6 +103,13 @@
           "target": [
             "TargetRisks"
           ]
+        },
+        {
+          "name": "RouteRisksObjectPage",
+          "pattern": "Risks({Uuid},{IsActiveEntity})",
+          "target": [
+            "TargetObjectPage"
+          ]
         }
       ],
       "targets": {
@@ -112,6 +119,13 @@
           "clearControlAggregation": false,
           "viewId": "Risks",
           "viewName": "Risks"
+        },
+        "TargetObjectPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ObjectPage",
+          "viewName": "ObjectPage"
         }
       }
     },
