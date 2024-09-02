@@ -5,13 +5,13 @@ import Input from "sap/m/Input";
 import Label from "sap/m/Label";
 import MessageToast from "sap/m/MessageToast";
 import Table from "sap/m/Table";
-import VBox from "sap/m/VBox";
 import Event from "sap/ui/base/Event";
 import Item from "sap/ui/core/Item";
 import UIComponent from "sap/ui/core/UIComponent";
 import Controller from "sap/ui/core/mvc/Controller";
 import SimpleForm from "sap/ui/layout/form/SimpleForm";
 import JSONModel from "sap/ui/model/json/JSONModel";
+import Context from "sap/ui/model/odata/v4/Context";
 import ODataListBinding from "sap/ui/model/odata/v4/ODataListBinding";
 import ODataModel from "sap/ui/model/odata/v4/ODataModel";
 
@@ -115,12 +115,17 @@ export default class Risks extends Controller {
         const newRisk = riskModel.getProperty("/newRisk");
         const binding = this.getView()?.getModel()?.bindList("/Risks") as ODataListBinding;
 
+        const { Title, Owner } = newRisk;
+        if (!(Title || Owner)) {
+            MessageToast.show("Missing mandatory Fields");
+            return;
+        }
+    
+        const context = binding.create(newRisk);
         try {
-            const context = binding.create(newRisk);
             await context.created();
-
             MessageToast.show("Risk created successfully");
-            binding.refresh();
+            context.refresh();
             this._onDialog.close()
         } catch (error) {
             MessageToast.show("Error creating risk");

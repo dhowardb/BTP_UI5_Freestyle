@@ -21,7 +21,7 @@
             >
                 <Table
                     id="RisksTable"
-                    items="{/Risks}"
+                    items="{ path: '/Risks', parameters: { $filter: 'IsActiveEntity eq true' } }" 
                 >
                     <headerToolbar>
                         <OverflowToolbar id="_IDGenOverflowToolbar1">
@@ -89,6 +89,83 @@
                                 />
                                 <Text
                                     id="_IDGenText6"
+                                    text="{Owner}"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+                <Table
+                    id="DraftRisksTable"
+                    items="{ path: '/Risks', parameters: { $filter: 'IsActiveEntity eq false' } }" 
+                >
+                    <headerToolbar>
+                        <OverflowToolbar id="_IDGenOverflowToolbar3">
+                            <Title
+                                id="_IDGenTitle3"
+                                text="Draft Risks"
+                                level="H2"
+                            />
+                            <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                            <Button
+                                id="_IDGenButton2"
+                                icon="sap-icon://add"
+                                press="onAddRisk"
+                            />
+                            <CheckBox
+                                id="_IDGenCheckBox3"
+                                text="Fixed Layout"
+                                selected="true"
+                                select="onCheckBoxSelect"
+                            >
+                                <customData>
+                                    <core:CustomData
+                                        key="targetTable"
+                                        value="DraftRisksTable"
+                                        writeToDom="true"
+                                    />
+                                </customData>
+                            </CheckBox>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column id="_IDGenColumn7">
+                            <Text
+                                id="_IDGenText11_Draft"
+                                text="Risks UUID"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn8">
+                            <Text
+                                id="_IDGenText12_Draft"
+                                text="Title"
+                            />
+                        </Column>
+                        <Column id="_IDGenColumn9">
+                            <Text
+                                id="_IDGenText13"
+                                text="Owner"
+                            />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            id="_IDGenColumnListItem3"
+                            type="Navigation"
+                            press="onNavigateToMitigations"
+                        >
+                            <cells>
+                                <Text
+                                    id="_IDGenText14"
+                                    text="{Uuid}"
+                                />
+                                <Text
+                                    id="_IDGenText15"
+                                    text="{Title}"
+                                />
+                                <Text
+                                    id="_IDGenText16"
                                     text="{Owner}"
                                 />
                             </cells>
