@@ -115,12 +115,25 @@ export default class Risks extends Controller {
         const newRisk = riskModel.getProperty("/newRisk");
         const binding = this.getView()?.getModel()?.bindList("/Risks") as ODataListBinding;
 
-        const { Title, Owner } = newRisk;
-        if (!(Title || Owner)) {
-            MessageToast.show("Missing mandatory Fields");
-            return;
+        // const { Title, Owner } = newRisk;
+        // if (!(Title || Owner)) {
+        //     MessageToast.show("Missing mandatory Fields");
+        //     return;
+        // }
+        
+        interface EventParameters {
+            context: Context;  
+            success: boolean;
         }
-    
+
+        binding.attachCreateCompleted( (event : Event) => {
+            const parameters = event.getParameters() as EventParameters;
+            const { context, success } = parameters;
+            if(!success) {
+                context.delete();
+            }
+        }, this )
+        
         const context = binding.create(newRisk);
         try {
             await context.created();
@@ -128,7 +141,7 @@ export default class Risks extends Controller {
             context.refresh();
             this._onDialog.close()
         } catch (error) {
-            MessageToast.show("Error creating risk");
+            MessageToast.show("Error Creating risk");
             console.error("Create risk error:", error)
         }
     }
