@@ -133,12 +133,13 @@ export default class Risks extends Controller {
                 context.delete();
             }
         }, this )
-        
+
         const context = binding.create(newRisk);
         try {
             await context.created();
             MessageToast.show("Risk created successfully");
             context.refresh();
+            binding.refresh();
             this._onDialog.close()
         } catch (error) {
             MessageToast.show("Error Creating risk");
